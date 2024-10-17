@@ -1,0 +1,96 @@
+/* Sign Up Section */
+.signup-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 2rem;
+  background-color: #ece9e2; /* Light background */
+}
+
+.form-container {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #e43d12; /* Red for headings */
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1rem;
+  color: #ec4319b6;
+  margin-bottom: 2rem;
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group {
+  margin-bottom: 1.5rem;
+}
+
+.input-group label {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #e43d12;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e43d12;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #f8efda; /* Light input background */
+}
+
+input:focus {
+  outline: none;
+  border-color: #ffa2b5; /* Softer red on focus */
+}
+
+.cta-button {
+  padding: 1rem;
+  background-color: #e43d12;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.cta-button:hover {
+  background-color: #c73211; /* Darker red on hover */
+}
+
+.login-link {
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.login-link a {
+  color: #e43d12;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .form-container {
+    padding: 1.5rem;
+  }
+}

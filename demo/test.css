@@ -1,0 +1,40 @@
+.event-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+    width: 100%;
+    max-width: 350px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.event-card:hover {
+    transform: scale(1.05);
+}
+
+.event-info {
+    padding: 10px;
+}
+
+/* Buttons */
+.interest-btn, .ticket-btn, .reminder-btn {
+    background-color: #007BFF;
+    color: white;
+    padding: 8px;
+    border: none;
+    margin: 5px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.interest-btn:hover, .ticket-btn:hover, .reminder-btn:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .event-card {
+        width: 100%;
+    }
+}
