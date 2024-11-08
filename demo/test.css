@@ -1,4 +1,4 @@
-.event-card {
+/* .event-card {
     display: flex;
     flex-direction: column;
     border: 1px solid #ddd;
@@ -19,22 +19,125 @@
 }
 
 /* Buttons */
-.interest-btn, .ticket-btn, .reminder-btn {
-    background-color: #007BFF;
-    color: white;
-    padding: 8px;
-    border: none;
-    margin: 5px 0;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+/* .interest-btn,
+.ticket-btn,
+.reminder-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 8px;
+  border: none;
+  margin: 5px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.interest-btn:hover, .ticket-btn:hover, .reminder-btn:hover {
-    background-color: #0056b3;
+.interest-btn:hover,
+.ticket-btn:hover,
+.reminder-btn:hover {
+  background-color: #0056b3;
 }
 
 @media (max-width: 768px) {
-    .event-card {
-        width: 100%;
-    }
+  .event-card {
+    width: 100%;
+  }
+}
+*/
+*/
+/* Ad Placement Section */
+.ad-placement-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4rem 2rem;
+  background-color: #f8efda;
+  overflow: hidden; /* Prevent overflow for animation */
+  position: relative;
+}
+
+.ad-content {
+  flex: 1;
+  max-width: 600px;
+  margin-right: 2rem;
+  animation-name: slide-in;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+}
+
+.ad-content h2 {
+  font-size: 2.5rem;
+  color: #e43d12; /* EventGrid Red */
+  margin-bottom: 1rem;
+}
+
+.ad-content p {
+  font-size: 1.2rem;
+  color: #ec4319b6; /* Softer Red */
+  margin-bottom: 2rem;
+}
+
+.ad-content .cta-button {
+  padding: 0.8rem 2rem;
+  background-color: #e43d12;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.ad-content .cta-button:hover {
+  background-color: #c73211;
+}
+
+.ad-image {
+  flex: 1;
+  animation-name: scale-in;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+}
+
+.ad-image img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Animations */
+@keyframes slide-in {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .ad-placement-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .ad-content {
+    margin-right: 0;
+    margin-bottom: 2rem;
+  }
+
+  .ad-image {
+    width: 100%;
+  }
 }

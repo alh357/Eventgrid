@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Create Event - EventGrid</title>
+    <title>Find Events - EventGrid</title>
     <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="create.css" />
+    <link rel="stylesheet" href="find.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -29,7 +29,7 @@
         <ul class="nav-links">
           <li><a href="/find-events">Find Events</a></li>
           <li><a href="/create-events">Create Events</a></li>
-          <li><a href="/place-ads">Ad Placement</a></li>
+          <li><a href="/place ads">Ad Placement</a></li>
         </ul>
       </nav>
       <div class="hamburger">
@@ -53,50 +53,9 @@
         </li>
       </ul>
     </div>
-
-    <div class="form-container">
-      <h2>Create an Event</h2>
-      <form id="create-event-form">
-        <!-- Event Name (Limit to 20 characters) -->
-        <div class="input-group">
-          <label for="event-name">Event Name (Max 20 characters)</label>
-          <input
-            type="text"
-            id="event-name"
-            name="event-name"
-            maxlength="20"
-            placeholder="Music Festival"
-            required
-          />
-        </div>
-
-        <!-- Event Description (Limit to 120 characters) -->
-        <div class="input-group">
-          <label for="event-description"
-            >Event Description (Max 120 characters)</label
-          >
-          <textarea
-            id="event-description"
-            name="event-description"
-            rows="4"
-            maxlength="120"
-            placeholder="Describe your event..."
-            required
-          ></textarea>
-        </div>
-
-        <!-- Event Date -->
-        <div class="input-group">
-          <label for="event-date">Event Date</label>
-          <input type="date" id="event-date" name="event-date" required />
-        </div>
-
-        <!-- Event Time -->
-        <div class="input-group">
-          <label for="event-time">Event Time</label>
-          <input type="time" id="event-time" name="event-time" required />
-        </div>
-
+    <!-- Preferences Section -->
+    <section class="preferences-section">
+      <div class="preferences-container">
         <!-- Location Selection -->
         <div class="input-group">
           <label for="location">Location</label>
@@ -107,7 +66,7 @@
             <!-- Add more locations as needed -->
           </select>
         </div>
-
+        <div class="top">➜</div>
         <!-- Event Categories -->
         <div class="input-group">
           <label for="categories">Event Categories</label>
@@ -135,23 +94,28 @@
           </div>
         </div>
 
-        <!-- Is the event free? -->
+        <!-- Event Type (Free or Paid) -->
         <div class="input-group">
-          <label>Is this event free?</label>
-          <div class="radio-group">
+          <label for="event-type">Event Type</label>
+          <div class="checkbox-group">
             <label
-              ><input type="radio" name="free-event" value="free" checked />
+              ><input type="checkbox" name="event-type" value="free" />
               Free</label
             >
             <label
-              ><input type="radio" name="free-event" value="paid" /> Paid</label
+              ><input type="checkbox" name="event-type" value="paid" />
+              Paid</label
+            >
+            <label
+              ><input type="checkbox" name="event-type" value="both" />
+              Both</label
             >
           </div>
         </div>
 
         <!-- Organizer Needs -->
         <div class="input-group">
-          <label>Are you looking for donations or professionals?</label>
+          <label>Are organizers looking for donations or professionals?</label>
           <div class="radio-group">
             <label
               ><input type="radio" name="looking-for" value="no" checked />
@@ -165,7 +129,7 @@
 
         <!-- Select Professionals Needed (Shown if 'Yes' above) -->
         <div id="professional-options" class="hidden">
-          <label>What are you looking for?</label>
+          <label>What are they looking for?</label>
           <div class="checkbox-group">
             <label
               ><input type="checkbox" name="professionals" value="caterers" />
@@ -185,35 +149,15 @@
             >
           </div>
         </div>
+      </div>
+    </section>
 
-        <!-- Event Image -->
-        <div class="input-group">
-          <label for="event-image">Event Image</label>
-          <input
-            type="file"
-            id="event-image"
-            name="event-image"
-            accept="image/*"
-            required
-          />
-        </div>
-
-        <!-- Event Address -->
-        <div class="input-group">
-          <label for="event-address">Event Address</label>
-          <input
-            type="text"
-            id="event-address"
-            name="event-address"
-            placeholder="123 Event Street, Kaduna"
-            required
-          />
-        </div>
-
-        <!-- Submit Button -->
-        <button type="submit" class="cta-button">Create Event</button>
-      </form>
-    </div>
+    <!-- Empty Section Where Event Cards Will Appear -->
+    <section class="events-section">
+      <div class="event-cards">
+        <!-- Event cards will dynamically appear here based on preferences -->
+      </div>
+    </section>
 
     <!-- Footer -->
     <footer>
@@ -256,8 +200,8 @@
         <p>&copy; 2024 EventGrid. All rights reserved.</p>
       </div>
     </footer>
-    <div class="top">➜</div>
-    <script src="create.js"></script>
+
     <script src="app.js"></script>
+    <script src="find.js"></script>
   </body>
 </html>
