@@ -164,12 +164,30 @@ app.get("/events", async (req, res) => {
   }
 });
 
-app.get("/events/locations/:location", async (req, res) => {
+app.get("/events/locations0/:location", async (req, res) => {
   try {
     const location = req.params.location;
 
     // Find all events where location is 'kaduna' (or any other location passed in the request)
-    const events = await event.find({ location: location });
+    const events = await event.find({
+      location: location,
+      categories: ["music", "business"],
+    });
+    //   console.log(events);
+
+    // Send the events as an array to the client
+    res.status(200).json(events);
+  } catch (error) {
+    console.error("Error fetching events:", error);
+    res.status(500).json({ error: "Server error while fetching events." });
+  }
+});
+app.get("/events/locations1/:location", async (req, res) => {
+  try {
+    const location = req.params.location;
+
+    // Find all events where location is 'kaduna' (or any other location passed in the request)
+    const events = await event.find({ location: location, hiring: true });
 
     // Send the events as an array to the client
     res.status(200).json(events);
