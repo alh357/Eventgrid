@@ -3,9 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign Up - EventGrid</title>
     <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="signup.css" />
+    <link rel="stylesheet" href="event.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,9 +17,10 @@
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
       rel="stylesheet"
     />
+
+    <title>EventGrid</title>
   </head>
   <body>
-    <!-- Header with Navbar and Hamburger Menu -->
     <header>
       <a href="/">
         <div class="logo">EventGrid</div>
@@ -29,7 +29,7 @@
         <ul class="nav-links">
           <li><a href="/find-events">Find Events</a></li>
           <li><a href="/create-events">Create Events</a></li>
-          <li><a href="/place ads">Ad Placement</a></li>
+          <li><a href="/place-ads">Ad Placement</a></li>
         </ul>
       </nav>
       <div class="hamburger">
@@ -54,29 +54,6 @@
         </li>
       </ul>
     </div>
-    <div class="top">➜</div>
-    <!-- Sign Up Section -->
-    <section class="signup-section">
-      <div class="form-container">
-        <h2>Login to Your Account</h2>
-        <form id="login-form">
-          <div class="input-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" required />
-          </div>
-          <div class="input-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required />
-          </div>
-          <button type="submit" class="cta-button1">Log In</button>
-        </form>
-        <p class="login-link">
-          Don't have an account? <a href="/signup">Sign up</a>
-        </p>
-        <p class="error"></p>
-      </div>
-    </section>
-    <!-- Footer -->
     <footer>
       <div class="footer-container">
         <div class="footer-section">
@@ -88,6 +65,16 @@
             unforgettable events.
           </p>
         </div>
+        <p
+          style="
+            text-align: center;
+            color: #e43d12;
+            font-size: larger;
+            margin: 1rem;
+          "
+        >
+          under development
+        </p>
         <div class="footer-section">
           <h3>Quick Links</h3>
           <ul class="footer-links">
@@ -107,18 +94,18 @@
             <a href="#"
               ><img
                 src="l.png
-              "
+                "
                 alt="LinkedIn"
             /></a>
           </div>
         </div>
       </div>
       <div class="footer-bottom">
-        <p style="color: white">&copy; 2024 EventGrid. All rights reserved.</p>
+        <p>&copy; 2024 EventGrid. All rights reserved.</p>
       </div>
     </footer>
-
+    <div class="top">➜</div>
+    <script src="event.js"></script>
     <script src="app.js"></script>
-    <script src="login.js"></script>
   </body>
 </html>

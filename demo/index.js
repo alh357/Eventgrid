@@ -1,3 +1,4 @@
+const userId = localStorage.getItem("userId");
 const locationSelect = document.querySelectorAll(".location-select");
 const cards = document.querySelectorAll(".event-cards");
 
@@ -15,13 +16,14 @@ locationSelect.forEach((i, oj) => {
 
       const data = await response.json();
       console.log(data);
-      data.forEach((list, numb) => {
+      data.forEach((list, n) => {
         // none = 'style="display: none"';
         // if (list.hiring) {
         //   none = "";
         // }
-        if (numb < 8) {
+        if (n < 8) {
           a = document.createElement("div");
+          a.id = list.eventId;
           a.classList.add("event-card");
           a.innerHTML = `
         <img src="${list.imageUrl}" class="img" alt="Event Image" />
@@ -39,7 +41,10 @@ locationSelect.forEach((i, oj) => {
             <span class="info-span">${list.interested}</span> People Interested
           </p>
         </div>
-        <button class="buttu">☆ I'm Interested</button>
+<div class="checkbox-wrapper">
+  <input type="checkbox" id="interested1${n}" class="interested-checkbox" />
+  <label for="interested1${n}" class="checkbox-label">☆ I'm Interested</label>
+</div>
         <div class="tick">
           <a href=""><img src="${list.eventType}.png" alt="" /></a>
         </div>
@@ -49,7 +54,45 @@ locationSelect.forEach((i, oj) => {
         <div class="id" style="display: none">${list.eventId}</div>
       `;
           cards[oj].appendChild(a);
+          if (list.interestedPeople.includes(userId)) {
+            document.querySelector(`#interested1${n}`).checked = true;
+            console.log(list.interestedPeople);
+          }
         }
+      });
+      document.querySelectorAll(".interested-checkbox").forEach((checkbox) => {
+        checkbox.addEventListener("change", async function () {
+          console.log("hgf");
+
+          // Redirect to login if user is not logged in
+          if (!userId) {
+            localStorage.setItem("loc", "/");
+            window.location.href = "/login"; // Redirect to login page
+            return;
+          }
+
+          // Get the event ID from the parent event card's id attribute
+          const eventId = this.closest(".event-card").id;
+
+          // Set the URL based on checkbox state
+          const url = this.checked
+            ? `/api/interested/${eventId}/${userId}`
+            : `/api/uninterested/${eventId}/${userId}`;
+
+          try {
+            const response = await fetch(url);
+            const result = await response.json();
+
+            if (response.ok) {
+              console.log(result.message);
+              // Optionally, update the UI with the new interested count if returned
+            } else {
+              console.error("Error:", result.error);
+            }
+          } catch (error) {
+            console.error("Request failed:", error);
+          }
+        });
       });
       // Process and display the events
     } catch (error) {
@@ -80,13 +123,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const data = await response.json();
     console.log(data);
-    data.forEach((list, numb) => {
+    data.forEach((list, n) => {
       // none = 'style="display: none"';
       // if (list.hiring) {
       //   none = "";
       // }
-      if (numb < 8) {
+      if (n < 8) {
         a = document.createElement("div");
+        a.id = list.eventId;
         a.classList.add("event-card");
         a.innerHTML = `
       <img src="${list.imageUrl}" class="img" alt="Event Image" />
@@ -104,7 +148,10 @@ document.addEventListener("DOMContentLoaded", async () => {
           <span class="info-span">${list.interested}</span> People Interested
         </p>
       </div>
-      <button class="buttu">☆ I'm Interested</button>
+<div class="checkbox-wrapper">
+  <input type="checkbox" id="interested2${n}" class="interested-checkbox" />
+  <label for="interested2${n}" class="checkbox-label">☆ I'm Interested</label>
+</div>
       <div class="tick">
         <a href=""><img src="${list.eventType}.png" alt="" /></a>
       </div>
@@ -114,7 +161,45 @@ document.addEventListener("DOMContentLoaded", async () => {
       <div class="id" style="display: none">${list.eventId}</div>
     `;
         cards[0].appendChild(a);
+        if (list.interestedPeople.includes(userId)) {
+          document.querySelector(`#interested2${n}`).checked = true;
+          console.log(list.interestedPeople);
+        }
       }
+    });
+    document.querySelectorAll(".interested-checkbox").forEach((checkbox) => {
+      checkbox.addEventListener("change", async function () {
+        console.log("hgf");
+
+        // Redirect to login if user is not logged in
+        if (!userId) {
+          localStorage.setItem("loc", "/");
+          window.location.href = "/login"; // Redirect to login page
+          return;
+        }
+
+        // Get the event ID from the parent event card's id attribute
+        const eventId = this.closest(".event-card").id;
+
+        // Set the URL based on checkbox state
+        const url = this.checked
+          ? `/api/interested/${eventId}/${userId}`
+          : `/api/uninterested/${eventId}/${userId}`;
+
+        try {
+          const response = await fetch(url);
+          const result = await response.json();
+
+          if (response.ok) {
+            console.log(result.message);
+            // Optionally, update the UI with the new interested count if returned
+          } else {
+            console.error("Error:", result.error);
+          }
+        } catch (error) {
+          console.error("Request failed:", error);
+        }
+      });
     });
     // Process and display the events
   } catch (error) {
@@ -131,14 +216,15 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const data = await response.json();
     console.log(data);
-    data.forEach((list, numb) => {
+    data.forEach((list, n) => {
       // none = 'style="display: none"';
       // if (list.hiring) {
       //   none = "";
       // }
-      if (numb < 8) {
+      if (n < 8) {
         a = document.createElement("div");
         a.classList.add("event-card");
+        a.id = list.eventId;
         a.innerHTML = `
       <img src="${list.imageUrl}" class="img" alt="Event Image" />
       <div class="event-info">
@@ -155,7 +241,10 @@ document.addEventListener("DOMContentLoaded", async () => {
           <span class="info-span">${list.interested}</span> People Interested
         </p>
       </div>
-      <button class="buttu">☆ I'm Interested</button>
+<div class="checkbox-wrapper">
+  <input type="checkbox" id="interested${n}" class="interested-checkbox" />
+  <label for="interested${n}" class="checkbox-label">☆ I'm Interested</label>
+</div>
       <div class="tick">
         <a href=""><img src="${list.eventType}.png" alt="" /></a>
       </div>
@@ -165,7 +254,45 @@ document.addEventListener("DOMContentLoaded", async () => {
       <div class="id" style="display: none">${list.eventId}</div>
     `;
         cards[1].appendChild(a);
+        if (list.interestedPeople.includes(userId)) {
+          document.querySelector(`#interested${n}`).checked = true;
+          console.log(list.interestedPeople);
+        }
       }
+    });
+    document.querySelectorAll(".interested-checkbox").forEach((checkbox) => {
+      checkbox.addEventListener("change", async function () {
+        console.log("hgf");
+
+        // Redirect to login if user is not logged in
+        if (!userId) {
+          localStorage.setItem("loc", "/");
+          window.location.href = "/login"; // Redirect to login page
+          return;
+        }
+
+        // Get the event ID from the parent event card's id attribute
+        const eventId = this.closest(".event-card").id;
+
+        // Set the URL based on checkbox state
+        const url = this.checked
+          ? `/api/interested/${eventId}/${userId}`
+          : `/api/uninterested/${eventId}/${userId}`;
+
+        try {
+          const response = await fetch(url);
+          const result = await response.json();
+
+          if (response.ok) {
+            console.log(result.message);
+            // Optionally, update the UI with the new interested count if returned
+          } else {
+            console.error("Error:", result.error);
+          }
+        } catch (error) {
+          console.error("Request failed:", error);
+        }
+      });
     });
     // Process and display the events
   } catch (error) {

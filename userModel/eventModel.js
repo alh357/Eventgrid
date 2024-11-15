@@ -6,6 +6,10 @@ const eventSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  userId: {
+    type: String,
+    required: true,
+  },
   name: {
     type: String,
     required: true,
@@ -14,6 +18,9 @@ const eventSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  professionalDetails: { type: String, required: false },
+  contactEmail: { type: String, required: false }, // Optional contact email for the event
+  contactPhone: { type: String, required: false },
   date: {
     type: Date,
     required: true,
@@ -46,10 +53,8 @@ const eventSchema = new mongoose.Schema({
     type: Array,
     required: true,
   },
-  interested: {
-    type: Number,
-    required: true,
-  },
+  interested: { type: Number, default: 0 },
+  interestedPeople: { type: [String], default: [] },
   lookingFor: {
     type: String,
     default: "none",

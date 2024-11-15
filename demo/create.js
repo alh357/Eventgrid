@@ -35,12 +35,20 @@ document
     const eventTime = document.getElementById("event-time").value;
     const location = document.getElementById("location").value;
     const eventAddress = document.getElementById("event-address").value;
+    const customProfessional =
+      document.getElementById("customProfessional").value;
+    const customCategory = document.getElementById("customCategory").value;
 
     // Collecting selected categories (checkboxes)
     const categories1 = Array.from(
       document.querySelectorAll('input[name="categories"]:checked')
     ).map((input) => input.value);
-
+    console.log(customCategory.split(","));
+    if (customCategory) {
+      customCategory.split(",").forEach((i) => {
+        categories1.push(i.toLowerCase());
+      });
+    }
     // Collecting event type (free, paid, or both)
     const eventIsFree = document.querySelector(
       'input[name="free-event"]:checked'
@@ -58,7 +66,12 @@ document
         document.querySelectorAll('input[name="professionals"]:checked')
       ).map((input) => input.value);
     }
-
+    console.log(customProfessional.split(","));
+    if (customProfessional) {
+      customProfessional.split(",").forEach((i) => {
+        professionalsNeeded.push(i.toLowerCase());
+      });
+    }
     for (let n = 0; n < professionalsNeeded.length; n++) {
       if (n === 2) {
         pros += "....,";
@@ -88,6 +101,7 @@ document
       // Step 3: Create the event data object with the image URL
       console.log(pros);
       const eventData = {
+        userId: localStorage.userId,
         eventId: eventId,
         name: eventName,
         description: eventDescription,
@@ -96,11 +110,15 @@ document
         time: eventTime,
         location: location,
         imageUrl: imageData.secure_url,
-        interested: 0,
+        detailedInfo: document.getElementById("detailedInfo").value || null,
+        contactEmail: document.getElementById("contactEmail").value,
+        contactPhone: document.getElementById("contactPhone").value,
         hiring: isLookingForProfessionals,
         hiring1: professionalsNeeded,
         lookingFor: pros.slice(0, pros.length - 2), //pros,
         categories: categories1, // URL of the uploaded image
+        professionalDetails:
+          document.getElementById("professionalDetails").value || null,
       };
       pros = "";
       console.log("eevent", eventData);
@@ -116,7 +134,14 @@ document
 
       const result = await response.json();
       console.log("Event created:", result);
+      //document.querySelector(".form-container").style.backgroundColor = "unset";
+      //document.querySelector(".form-container").innerHTML =
+      //'<p class="error" style="font-size=1rem" >Event created</p>';
     } catch (error) {
       console.error("Error creating event:", error);
     }
   });
+if (!localStorage.userId) {
+  localStorage.setItem("loc", "/create-events");
+  window.location.href = "/login";
+}

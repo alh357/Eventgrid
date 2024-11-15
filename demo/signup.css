@@ -60,7 +60,7 @@ input:focus {
   border-color: #ffa2b5; /* Softer red on focus */
 }
 
-.cta-button {
+.cta-button1 {
   padding: 1rem;
   background-color: #e43d12;
   color: white;
@@ -70,7 +70,7 @@ input:focus {
   font-size: 1rem;
 }
 
-.cta-button:hover {
+.cta-button1:hover {
   background-color: #c73211; /* Darker red on hover */
 }
 

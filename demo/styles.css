@@ -158,8 +158,7 @@ header {
   font-family: "Plus Jakarta Sans", sans-serif;
 }
 
-.cta-button,
-.buttu {
+.cta-button {
   padding: 1rem;
   background-color: #ffa2b500;
   color: #e43d12;
@@ -175,11 +174,15 @@ header {
   margin: 0 2px;
 }
 
-.ex:hover {
+.ex:hover,
+.ex1:hover,
+.ex2:hover {
   color: white;
   background-color: #e43d12;
 }
-
+.ex2 {
+  display: none;
+}
 .hero-image {
   width: 50%;
   flex-shrink: 0;
@@ -245,7 +248,9 @@ option {
 option:hover {
   background-color: #ffe082; /* Highlight on hover */
 }
-
+.error {
+  color: #e43d12;
+}
 .cent p {
   font-size: 1.2rem;
   color: #e43d12;
@@ -255,6 +260,7 @@ option:hover {
   grid-template-columns: repeat(4, 1fr);
   gap: 3%;
   row-gap: 5%;
+
   /* overflow: auto;
   height: auto; */
 }
@@ -287,7 +293,7 @@ option:hover {
   margin-bottom: 2.2%;
 }
 .info {
-  font-size: 1rem;
+  font-size: 0.9rem;
   line-height: 22px;
   font-weight: 400;
   margin: 2% 0;
@@ -305,6 +311,8 @@ option:hover {
   background-color: #ece9e2;
   width: 100%;
   border-radius: 5px;
+  cursor: pointer;
+  font-family: "Plus Jakarta Sans", sans-serif;
   font-size: 1rem;
   background-color: #e43d12;
   color: white;
@@ -682,4 +690,29 @@ footer {
   .footer-section {
     flex-basis: 100%;
   }
+}
+/* Hide default checkbox */
+.interested-checkbox {
+  display: none;
+}
+
+/* Style the label to look like a button */
+.checkbox-label {
+  padding: 0.8rem;
+  background-color: #e43d12;
+  width: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 1rem;
+  color: white;
+  text-align: center;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+/* Change color when the checkbox is checked */
+.interested-checkbox:checked + .checkbox-label,
+.checkbox-label:hover {
+  background-color: rgb(8, 8, 8);
 }

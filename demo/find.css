@@ -28,7 +28,14 @@
   color: #e43d12;
   margin-bottom: 0.5rem;
 }
-
+.lma {
+  width: 60%;
+  padding: 10px;
+  border: 1px solid #e43d12;
+  border-radius: 5px;
+  background-color: #f8efda;
+  font-size: 1rem;
+}
 .input-group select,
 .checkbox-group input[type="checkbox"] {
   margin-right: 0.5rem;
@@ -36,7 +43,7 @@
 .events-section {
   margin-bottom: 50px;
   overflow: auto;
-  height: auto;
+  min-height: 100vh;
 }
 
 .checkbox-group {
